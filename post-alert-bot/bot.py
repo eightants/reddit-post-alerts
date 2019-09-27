@@ -28,7 +28,7 @@ async def on_ready():
             for p in posts:
                 await channel.send("[" + sub + "] " + p.title + "\n" + p.url)
                 #await channel.send(p.url)
-        await asyncio.sleep(300)
+        await asyncio.sleep(1200)
 
 
 client.run(token)
