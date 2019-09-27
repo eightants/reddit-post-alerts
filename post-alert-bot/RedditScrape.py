@@ -20,12 +20,12 @@ def ScrapePosts(sub, keywords):
         subreddit = reddit.subreddit(sub)
 
         # checks for any new post
-        for submission in subreddit.new(limit=5):
+        for submission in subreddit.new(limit=10):
                 for keyword in keywords:
                     if submission.title.lower().find(keyword) != -1: 
                         posts.append(submission)
                         break
-        time.sleep(5)            
+        time.sleep(2)            
     except Exception as e: 
         time.sleep(10)
     return posts
