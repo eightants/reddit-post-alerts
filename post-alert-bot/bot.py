@@ -7,24 +7,28 @@ import asyncio
 import discord
 import RedditScrape as rs
 
+# read config file
+subs = ['frugalmalefashion']
+keywords = ['adidas', 'ultraboost', 'uniqlo']
+channelid = 627214659719790594
+
 token = os.environ['DISCORDBOT_TOKEN']
 
 client = discord.Client()
-subs = ['frugalmalefashion']
-keywords = ['adidas', 'ultraboost']
 
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
-    channel = client.get_channel(326332285802774538)
+    channel = client.get_channel(channelid)
     print(channel)
     # await client.wait_until_ready()
     while True:
-        posts = rs.ScrapePosts(subs, keywords)
-        for p in posts:
-            await channel.send("[" + p.subreddit.name + "] " + p.title + "\n" + p.url)
-            #await channel.send(p.url)
-        await asyncio.sleep(60)
+        for sub in subs:
+            posts = rs.ScrapePosts(sub, keywords)
+            for p in posts:
+                await channel.send("[" + sub + "] " + p.title + "\n" + p.url)
+                #await channel.send(p.url)
+        await asyncio.sleep(300)
 
 
 client.run(token)

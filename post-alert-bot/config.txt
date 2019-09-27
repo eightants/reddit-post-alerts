@@ -1,0 +1,6 @@
+# id of the channel the bot will post in (enable developer tools, then right click the channel and select copy id)
+326332285802774538
+# subreddits to search, separate with comma
+frugalmalefashion
+# keywords to search, separate with comma
+adidas, ultraboost
