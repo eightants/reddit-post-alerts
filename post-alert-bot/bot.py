@@ -36,6 +36,7 @@ async def on_ready():
             # Executing your PostgreSQL query
             cur.execute("SELECT EXISTS (SELECT 1 FROM reddit-post-alerts WHERE post_id=" + str(p.id) + ")")
             post_id = cur.fetchone()[0]
+            print(post_id)
             if post_id == False: 
                 cur.execute("INSERT INTO reddit-post-alerts (post_id) VALUES (" + p.id + ")")
                 # In order to make the changes to the database permanent, we now commit our changes
