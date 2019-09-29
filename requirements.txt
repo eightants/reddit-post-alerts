@@ -4,3 +4,4 @@ discord==1.0.1
 discord.py==1.2.3
 praw==6.4.0
 prawcore==1.0.1
+psycopg2-binary==2.8.3
