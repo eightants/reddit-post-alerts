@@ -34,7 +34,7 @@ async def on_ready():
         posts = rs.ScrapePosts(sub, keywords)
         for p in posts:
             # Executing your PostgreSQL query
-            cur.execute("SELECT EXISTS (SELECT 1 FROM redditpostalert WHERE post_id=" + str(p.id) + ")")
+            cur.execute("SELECT EXISTS (SELECT 1 FROM redditpostalert WHERE post_id = '" + str(p.id) + "');")
             post_id = cur.fetchone()[0]
             print(post_id)
             if post_id == False: 
