@@ -38,7 +38,7 @@ async def on_ready():
             post_id = cur.fetchone()[0]
             print(post_id)
             if post_id == False: 
-                cur.execute("INSERT INTO redditpostalerts (post_id) VALUES (" + p.id + ")")
+                cur.execute("INSERT INTO redditpostalerts (post_id) VALUES ('" + p.id + "');")
                 # In order to make the changes to the database permanent, we now commit our changes
                 conn.commit()
                 await channel.send("[" + sub + "] " + p.title + "\n" + p.url)
