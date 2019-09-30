@@ -9,8 +9,8 @@ import RedditScrape as rs
 import psycopg2
 
 # read config file
-subs = ['frugalmalefashion']
-keywords = ['adidas', 'ultraboost', 'uniqlo']
+subs = ['frugalmalefashion', 'freebies']
+keywords = ['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'alphabounce', 'amazon']
 channelid = 627214659719790594
 
 token = os.environ['DISCORDBOT_TOKEN']
