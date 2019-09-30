@@ -10,7 +10,7 @@ import psycopg2
 
 # read config file
 subs = ['frugalmalefashion', 'freebies']
-keywords = ['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'alphabounce', 'amazon']
+keywords = [['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'alphabounce'], ['amazon']]
 channelid = 627214659719790594
 
 token = os.environ['DISCORDBOT_TOKEN']
@@ -29,8 +29,9 @@ async def on_ready():
     while True: 
         # Creating a cursor (a DB cursor is an abstraction, meant for data set traversal)
         cur = conn.cursor()
-        for sub in subs:
-            posts = rs.ScrapePosts(sub, keywords)
+        for i in range(len(subs)):
+            sub = subs[i]
+            posts = rs.ScrapePosts(sub, keywords[i])
             for p in posts:
                 # Executing your PostgreSQL query
                 cur.execute("SELECT EXISTS (SELECT 1 FROM redditpostalerts WHERE post_id = '" + str(p.id) + "');")
