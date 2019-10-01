@@ -16,8 +16,6 @@ channelid = 627214659719790594
 token = os.environ['DISCORDBOT_TOKEN']
 DATABASE_URL = os.environ['DATABASE_URL']
 
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
 client = discord.Client()
 
 @client.event
@@ -27,6 +25,7 @@ async def on_ready():
     print(channel)
     # await client.wait_until_ready()
     while True: 
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         # Creating a cursor (a DB cursor is an abstraction, meant for data set traversal)
         cur = conn.cursor()
         for i in range(len(subs)):
