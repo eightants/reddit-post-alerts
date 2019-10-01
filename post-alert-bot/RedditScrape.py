@@ -24,6 +24,7 @@ def ScrapePosts(sub, keywords):
                 for keyword in keywords:
                     if submission.title.lower().find(keyword) != -1: 
                         posts.append(submission)
+                        print("Match for" + keyword + ": " + submission.title)
                         break
         time.sleep(2)            
     except Exception as e: 
