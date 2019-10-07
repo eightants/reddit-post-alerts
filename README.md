@@ -105,7 +105,7 @@ DATABASE_URL = os.environ['DATABASE_URL']
 To set environment variables, use the code below. If you use a different variable name for your environment variables, be sure to change that in the Python code too. The `BOTONE_ID` is the code right below the name of your Reddit bot, under 'personal use script'. `BOTONE_SECRET` is the bot secret, both are found on the Reddit [bot page](https://www.reddit.com/prefs/apps/). `BOTONE_AGENT` is the name you want to give this release of the bot, e.g. `reddit-post-alerts-v1`
 
 The token for your Discord bot can be found on the Developer Portal on the Bots page for your bot.
-
+```
 # Set heroku config/env variables
 $ heroku config:set BOTONE_USERNAME=<your_reddit_username>
 $ heroku config:set BOTONE_PASSWORD=<your_reddit_password>
@@ -116,7 +116,7 @@ $ heroku config:set DISCORDBOT_TOKEN=<your_discord_bot_token>
 
 # Confirm they're set with this command
 $ heroku config
-
+```
 ## Setting up the database
 
 Since this script will check every 5 minutes, we want to make sure it doesn't notify us of the same post twice. For this, we need a way to store the `post_id` of each post we have already been notified of. We will be using PostgreSQL as it is free and integrated with Heroku. Start by [installing Postgres](https://www.postgresql.org/download/) on your local machine. 
