@@ -27,6 +27,6 @@ def ScrapePosts(sub, keywords):
                         print("Match for" + keyword + ": " + submission.title)
                         break
         time.sleep(2)            
-    except Exception as e: 
+    except Exception: 
         time.sleep(10)
     return posts
