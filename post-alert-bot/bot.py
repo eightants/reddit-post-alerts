@@ -9,7 +9,7 @@ import RedditScrape as rs
 import psycopg2
 
 subs = ['frugalmalefashion', 'freebies']
-keywords = [['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'alphabounce'], ['amazon']]
+keywords = [['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'a&f', 'abercrombie'], ['amazon']] #old keywords: alphabounce
 channelid = 627214659719790594
 
 token = os.environ['DISCORDBOT_TOKEN']
