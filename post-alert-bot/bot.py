@@ -8,6 +8,17 @@ import discord
 import RedditScrape as rs
 import psycopg2
 
+import requests
+from lxml import html
+from selenium import webdriver
+from time import sleep
+
+# 11 for spring, 21 for summer, 31 for fall
+term = "201911"
+crn = "12359"
+url = "https://compass-ssb.tamu.edu/pls/PROD/bwykschd.p_disp_detail_sched?term_in=" + term + "&crn_in=" + crn
+
+
 subs = ['frugalmalefashion', 'freebies']
 keywords = [['adidas', 'ultraboost', 'uniqlo', 'vans', 'nike', 'stan smith', 'a&f', 'abercrombie'], ['amazon']] #old keywords: alphabounce
 channelid = 627214659719790594
@@ -40,6 +51,14 @@ async def on_ready():
                     conn.commit()
                     await channel.send("[" + sub + "] " + p.title + "\n" + p.url)
                 #await channel.send(p.url)
+        # checks tamu compass for space in classes
+        res = requests.get(url)
+        tree = html.fromstring(res.content)
+        table = tree.xpath('//td/table[@class="datadisplaytable"]/tr/td/text()')
+        cap = table[1]
+        curr = table[2]
+        if (cap > curr): 
+            await channel.send("Space available in section: " + str(curr) + "/" + str(cap))
         # We have committed the necessary changes and can now close out our connection
         cur.close()
         conn.close()
